@@ -25,6 +25,8 @@ rapport aux compétitions
 ● Un formulaire de souscription pour avoir les dernières news sportives
 via l’email.
 
+Django
+
 ```
 git clone https://github.com/amzilyounes/FootballApp-Django.git
 
@@ -36,4 +38,31 @@ pip install django
 
 python manage.py runserver
 
+pip install djangorestframework
+
+pip install django-cors-headers
+
+```
+
+React
+```
+npx create-react-app frontend
+
+
+npm install react-bootstrap
+
+npm install react-router-dom
+
+npm install react-router-bootstrap
+
+npm install axios
+
+```
+
+Servers
+
+```
+python3 manage.py runserver
+
+npm start
 ```
