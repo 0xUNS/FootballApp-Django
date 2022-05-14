@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import {Row, Col, Image, ListGroup, Button, Card} from 'react-bootstrap'
-import Rating from '../components/Rating'
 import axios from 'axios'
 
-function ProductScreen({match}) {
-    const [product, setProduct]=useState([])
+function LeagueScreen({match}) {
+    const [league, setLeague]=useState([])
     const { id } = useParams();
     useEffect(()=>{
-        async function fetchProduct(){
-            const {data} = await axios.get(`/api/products/${id}`)
-            setProduct(data)
+        async function fetchLeague(){
+            const {data} = await axios.get(`/api/leagues/${id}`)
+            setLeague(data)
         }
-        fetchProduct()
+        fetchLeague()
     },[])
 
     return (
@@ -20,21 +19,18 @@ function ProductScreen({match}) {
             <Link to="/" className="btn btn-light my-3"> Retour </Link>
             <Row>
                 <Col md={6}>
-                    <Image src={product.image} alt={product.name} fluid/>
+                    <Image src={league.image} alt={league.name} fluid/>
                 </Col>
                 <Col md={3}>
                     <ListGroup variant="flush">
                         <ListGroup.Item>
-                            <h3>{product.name}</h3>
+                            <h3>{league.name}</h3>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Rating value={product.rating} text={`${product.numReviews} étoiles`} color={`#f8e825`}/>
+                            Price: $ {league.price}
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            Price: $ {product.price}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            Description: {product.description}
+                            Description: {league.description}
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
@@ -45,7 +41,7 @@ function ProductScreen({match}) {
                                 <Row>
                                     <Col>Price:</Col>
                                     <Col>
-                                        <strong>$ {product.price}</strong>
+                                        <strong>$ {league.price}</strong>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
@@ -53,12 +49,12 @@ function ProductScreen({match}) {
                                 <Row>
                                     <Col>Status:</Col>
                                     <Col>
-                                        {product.countInStock>0?'Disponible en stock':'Rupture de stock'}
+                                        {league.countInStock>0?'Disponible en stock':'Rupture de stock'}
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button className='btn-block' disabled={product.countInStock===0} type='button'>Ajouter</Button>
+                                <Button className='btn-block' disabled={league.countInStock===0} type='button'>Ajouter</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
@@ -68,4 +64,4 @@ function ProductScreen({match}) {
     )
 }
 
-export default ProductScreen
+export default LeagueScreen

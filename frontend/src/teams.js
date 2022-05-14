@@ -1,4 +1,4 @@
-products = [
+const teams = [
   {
     '_id': '1',
     'name': 'Airpods Wireless Bluetooth Headphones',
@@ -80,3 +80,4 @@ products = [
 ]
 
 
+export default teams

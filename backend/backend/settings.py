@@ -16,13 +16,13 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
+# Quick-start development settings - unsuitable for teamion
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in teamion secret!
 SECRET_KEY = 'django-insecure-mkv(a4dibnam8-)p-s$1l^98s4t)ef2aw^@7x13)vtwpwj@qe6'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in teamion!
 DEBUG = True
 
 ALLOWED_HOSTS = []

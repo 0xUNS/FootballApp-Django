@@ -29,7 +29,7 @@
     ]
   },
   "browserslist": {
-    "production": [
+    "teamion": [
       ">0.2%",
       "not dead",
       "not op_mini all"
