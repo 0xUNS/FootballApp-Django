@@ -2,7 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.MyRoutes.as_view(),name="routes"),
-    path('teams/',views.TeamsView.as_view(),name="teams"),
-    path('teams/<str:pk>',views.TeamView.as_view(),name="teams"),
+    path('', views.apiOverview, name="api_urls"),
+    path('clubs/', views.ClubList, name="clubs-list"),
+    path('clubs/<str:pk>', views.ClubDetail, name="club-detail"),
+    path('ligues/',views.LeagueList,name="leagues-list"),
+    path('ligues/<str:pk>',views.LeagueDetail,name="league-detail"),
 ]
