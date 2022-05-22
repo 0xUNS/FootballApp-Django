@@ -3,15 +3,15 @@ import { Link, useParams } from 'react-router-dom';
 import {Row, Col, Image, ListGroup, Button, Card} from 'react-bootstrap'
 import axios from 'axios'
 
-function LeagueScreen({match}) {
-    const [league, setLeague]=useState([])
+function Clubs_Detail_Screen({match}) {
+    const [club, setClub]=useState([])
     const { id } = useParams();
     useEffect(()=>{
-        async function fetchLeague(){
-            const {data} = await axios.get(`/api/leagues/${id}`)
-            setLeague(data)
+        async function fetchClub(){
+            const {data} = await axios.get(`/api/clubs/${id}`)
+            setClub(data)
         }
-        fetchLeague()
+        fetchClub()
     },[])
 
     return (
@@ -19,18 +19,19 @@ function LeagueScreen({match}) {
             <Link to="/" className="btn btn-light my-3"> Retour </Link>
             <Row>
                 <Col md={6}>
-                    <Image src={league.image} alt={league.name} fluid/>
+                    <Image src={club.logo} alt={club.name} fluid/>
                 </Col>
                 <Col md={3}>
                     <ListGroup variant="flush">
                         <ListGroup.Item>
-                            <h3>{league.name}</h3>
+                            <h3>{club.name}</h3>
+                        </ListGroup.Item>
+                        
+                        <ListGroup.Item>
+                            Country: {club.country}
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            Price: $ {league.price}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            Description: {league.description}
+                            Description: {club.website}
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
@@ -41,7 +42,7 @@ function LeagueScreen({match}) {
                                 <Row>
                                     <Col>Price:</Col>
                                     <Col>
-                                        <strong>$ {league.price}</strong>
+                                        <strong>test</strong>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
@@ -49,12 +50,12 @@ function LeagueScreen({match}) {
                                 <Row>
                                     <Col>Status:</Col>
                                     <Col>
-                                        {league.countInStock>0?'Disponible en stock':'Rupture de stock'}
+                                        test
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button className='btn-block' disabled={league.countInStock===0} type='button'>Ajouter</Button>
+                                <Button className='btn-block' disabled={club.countInStock===0} type='button'>Ajouter</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
@@ -64,4 +65,4 @@ function LeagueScreen({match}) {
     )
 }
 
-export default LeagueScreen
+export default Clubs_Detail_Screen

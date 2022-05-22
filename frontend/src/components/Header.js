@@ -13,11 +13,11 @@ function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <LinkContainer to="/teams">
+                        <LinkContainer to="/clubs">
                         <Nav.Link><i className='fas fa-shopping-cart'></i> Equipes </Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/leagues">
-                        <Nav.Link><i className='fas fa-shopping-cart'></i> Leagues </Nav.Link>
+                        <LinkContainer to="/ligues">
+                        <Nav.Link><i className='fas fa-shopping-cart'></i> Ligues </Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/login">
                         <Nav.Link><i className='fas fa-user'></i> Login </Nav.Link>

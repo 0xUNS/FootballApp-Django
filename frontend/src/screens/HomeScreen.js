@@ -12,3 +12,10 @@ function HomeScreen() {
 }
 
 export default HomeScreen
+
+/*
+    'Liste des Clubs':'clubs/',
+    'Detail du Club':'clubs/<str:pk>',
+    'Liste des Ligues':'ligues/',
+    'Detail des Ligue':'ligues/<str:pk>'
+*/

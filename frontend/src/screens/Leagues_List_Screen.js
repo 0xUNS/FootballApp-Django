@@ -3,11 +3,11 @@ import { Row, Col } from 'react-bootstrap'
 import League from '../components/League'
 import axios from 'axios'
 
-function LeaguesScreen() {
+function Clubs_List_Screen() {
     const [leagues, setLeagues]=useState([])
     useEffect(()=>{
         async function fetchLeagues(){
-            const {data} = await axios.get('/api/leagues/')
+            const {data} = await axios.get('/api/ligues/')
             setLeagues(data)
         }
         fetchLeagues()
@@ -26,4 +26,4 @@ function LeaguesScreen() {
     )
 }
 
-export default LeaguesScreen
+export default Clubs_List_Screen
