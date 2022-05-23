@@ -3,8 +3,27 @@ from . import views
 
 urlpatterns = [
     path('', views.apiOverview, name="api_urls"),
-    path('clubs/', views.ClubList, name="clubs-list"),
-    path('clubs/<str:pk>', views.ClubDetail, name="club-detail"),
+
+    path('matchs/',views.MatchList,name="matchs-list"),
+    path('matchs/<str:pk>',views.MatchDetail,name="matchs-detail"),
+
     path('ligues/',views.LeagueList,name="leagues-list"),
     path('ligues/<str:pk>',views.LeagueDetail,name="league-detail"),
+
+    path('clubs/', views.ClubList, name="clubs-list"),
+    path('clubs/<str:pk>', views.ClubDetail, name="club-detail"),
+
+
+    path('joueurs/',views.PlayerList,name="joueurs-list"),
+    path('joueurs/<str:pk>',views.PlayerDetail,name="joueurs-detail"),
+
+    path('coaches/',views.CoachList,name="coaches-list"),
+    path('coaches/<str:pk>',views.CoachDetail,name="coaches-detail"),
+
+    path('pays/',views.CountryList,name="pays-list"),
+    path('pays/<str:pk>',views.CountryDetail,name="pays-detail"),
+    path('pays_new/', views.CountryCreate, name='pays-create'),
+
+    path('test/',views.Tests,name="test-data"),
+
 ]

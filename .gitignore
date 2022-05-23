@@ -1,4 +1,6 @@
 *.temp.py
 *.pyc
-db.sqlite3
 data.py
+NOTE
+backend/db.sqlite3
+backend/media/*/*.png

@@ -134,3 +134,5 @@ CORE_ORIGIN_WHITELIST = [
 
 MEDIA_ROOT = BASE_DIR/ 'media'
 MEDIA_URL = '/media/'
+
+INSTALLED_APPS += ['import_export']
