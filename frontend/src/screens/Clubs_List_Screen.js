@@ -14,14 +14,20 @@ function Clubs_List_Screen() {
     },[])
     return (
         <div className="container">
-            <h1>Les Equipes</h1>
-            <Row>
-                {clubs.map(club =>(
-                    <Col key={club.code} lg={12} xl={12}>
-                        <Club club={club} />
-                    </Col>
-                ))}
-            </Row>
+            <Col md={8} className="border">
+                <Row className="py-4">
+                <h2>Les Equipes</h2>
+                    {clubs.map(club =>(
+                        <Col key={club.code} md={12}>
+                            <Club club={club} />
+                        </Col>
+                    ))}
+                </Row>
+            </Col>
+            
+            <Col md="auto" className="border">
+            <h3>Top Leagues</h3>
+            </Col>
         </div>
     )
 }

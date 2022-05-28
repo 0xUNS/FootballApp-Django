@@ -5,7 +5,7 @@ from django.core.validators import RegexValidator
 def path_image(instance, filename):
     return '/'.join([type(instance).__name__, instance.code+'.'+filename.split('.')[-1]])
 def path_imag_p(instance, filename):
-    return '/'.join(['Profil', instance.id+'.'+filename.split('.')[-1]])
+    return '/'.join(['Profil', instance.first_name +"_"+instance.family_name+'.'+filename.split('.')[-1]])
 
 POSITION_LIST = (
         ('Gardien de but','Gardien de but'),
@@ -65,7 +65,7 @@ class Club(models.Model):
     name = models.CharField(max_length=30)
     logo = models.ImageField(default='NULL.png',upload_to = path_image, blank=True)
     stadium = models.CharField(max_length=30, blank=True)
-    Rating = models.PositiveIntegerField(default=0, blank=True)
+    rating = models.PositiveIntegerField(default=0, blank=True)
     website = models.URLField(max_length=100, blank=True)
     country = models.ForeignKey('Country',related_name='clubs',on_delete=models.SET_NULL, null=True)
     def __str__(self):
@@ -73,8 +73,7 @@ class Club(models.Model):
     def save(self, force_insert=False, force_update=False):
         self.code = self.code.upper()
         super(Club, self).save(force_insert, force_update)
-    class Meta:
-        ordering = ['country','name']
+
 
 
 class League(models.Model):

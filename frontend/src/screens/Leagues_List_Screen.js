@@ -14,10 +14,10 @@ function Clubs_List_Screen() {
     },[])
     return (
         <div>
-            <h1>Les Leagues</h1>
+            <h2>Les Leagues</h2>
             <Row>
                 {leagues.map(league =>(
-                    <Col key={league._id} sm={12} md={6} lg={4} xl={3}>
+                    <Col key={league.id} sm={12} md={6} lg={4} xl={3}>
                         <League league={league} />
                     </Col>
                 ))}

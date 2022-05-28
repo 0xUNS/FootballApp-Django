@@ -5,21 +5,18 @@ import { Link } from 'react-router-dom'
 
 function League({ league }) {
     return (
+        <Link to={`/ligues/${league.code}`}>
 		<div class="row" id="card-league">
             <div class="row" id="card-logo-container">
-            <div id="card-logo" style={{backgroundImage: `url(${league.logo})`}}>
+                <div id="card-logo" style={{backgroundImage: `url(${league.logo})`}}></div>
+            </div>
+            <div class="row" id="card-container">{league.name}</div>
+            <div class="row">
+                <div class="col" id="confed-div">{league.confederation}</div>
+                <div id="country-div" style={{backgroundImage: `url(${league.country.flag})`}}></div>
             </div>
         </div>
-        <div class="row" id="card-container">
-                {league.name}
-        </div>
-        <div class="row">
-            <div class="col" id="confed-div">{league.confederation}</div>
-            <div class="col" id="country-div">
-                <img src={`https://flagicons.lipis.dev/flags/1x1/${league.country}.svg`} alt={league.country} id="country-flag"/>
-            </div>
-            </div>
-        </div>
+        </Link>
     )
 }
 

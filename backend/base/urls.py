@@ -17,9 +17,6 @@ urlpatterns = [
     path('joueurs/',views.PlayerList,name="joueurs-list"),
     path('joueurs/<str:pk>',views.PlayerDetail,name="joueurs-detail"),
 
-    path('coaches/',views.CoachList,name="coaches-list"),
-    path('coaches/<str:pk>',views.CoachDetail,name="coaches-detail"),
-
     path('pays/',views.CountryList,name="pays-list"),
     path('pays/<str:pk>',views.CountryDetail,name="pays-detail"),
 

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import MatchSerializer, LeagueSerializer, ClubSerializer, PlayerSerializer, CoachSerializer, CountrySerializer, TestSerializer, ClubList_Serializer
-from .models import Match, League, Club, Player, Coach, Country, TestData
+from .serializers import *
+from .models import *
 
 
 # ------ TEST ----------
@@ -21,7 +21,6 @@ def apiOverview(request):
                     'Liste des Leagues':'http://127.0.0.1:8000/api/ligues/',
                     'Liste des Clubs':'http://127.0.0.1:8000/api/clubs/',
                     'Liste des Joueur':'http://127.0.0.1:8000/api/joueurs/',
-                    'Liste des Coachs':'http://127.0.0.1:8000/api/coaches/',
                     'Liste des Pays':'http://127.0.0.1:8000/api/pays/',
                 }
     return Response(api_urls)
@@ -56,7 +55,7 @@ def ClubDetail(request, pk):
 @api_view(['GET'])
 def LeagueList(request):
     leagues = League.objects.all()
-    serializer = LeagueSerializer(leagues, many=True)
+    serializer = LeagueList_Serializer(leagues, many=True)
     return Response(serializer.data)
     
 @api_view(['GET'])
@@ -76,19 +75,6 @@ def PlayerList(request):
 def PlayerDetail(request, pk):
     player = Player.objects.get(id=pk)
     serializer = PlayerSerializer(player, many=False)
-    return Response(serializer.data)
-
-# ------ COACHES ----------
-@api_view(['GET'])
-def CoachList(request):
-    coachs = Coach.objects.all()
-    serializer = CoachSerializer(coachs, many=True)
-    return Response(serializer.data)
-    
-@api_view(['GET'])
-def CoachDetail(request, pk):
-    coach = Coach.objects.get(id=pk)
-    serializer = CoachSerializer(coach, many=False)
     return Response(serializer.data)
 
 # ------ COUNTRY ----------

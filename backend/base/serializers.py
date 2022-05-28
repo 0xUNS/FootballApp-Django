@@ -11,12 +11,16 @@ class CountrySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ClubSerializer(serializers.ModelSerializer):
+    country = CountryName_Serializer(read_only=True)
+    coach = Coach_inClub_Serializer(read_only=True)
+    leagues = serializers.SlugRelatedField(read_only=True, many=True,slug_field='name')
     class Meta:
         model = Club
-        fields = '__all__'
+        fields = ['id','code','name','country','coach','stadium','website','logo','rating','leagues']
 
 class LeagueSerializer(serializers.ModelSerializer):
-    country = CountrySerializer(read_only=True)
+    country = CountryName_Serializer(read_only=True)
+    clubs = serializers.SlugRelatedField(read_only=True, many=True,slug_field='name')
     class Meta:
         model = League
         fields = '__all__'
@@ -24,11 +28,6 @@ class PlayerSerializer(serializers.ModelSerializer):
     nationality = CountrySerializer(read_only=True)
     class Meta:
         model = Player
-        fields = '__all__'
-class CoachSerializer(serializers.ModelSerializer):
-    nationality = CountrySerializer(read_only=True)
-    class Meta:
-        model = Coach
         fields = '__all__'
 
 class MatchSerializer(serializers.ModelSerializer):
@@ -44,9 +43,15 @@ class TestSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ClubList_Serializer(serializers.ModelSerializer):
-    country = Countrynameflag_Serializer(read_only=True)
-    coach = serializers.PrimaryKeyRelatedField(allow_null=True, read_only=True)
-    coach = Coachname_Serializer(read_only=True)
+    country = CountryName_Serializer(read_only=True)
+    coach = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Club
-        fields = ['name','country','coach','stadium','logo']
+        fields = ['code','name','country','coach','stadium','logo']
+        ordering = ['rating','name']
+
+class LeagueList_Serializer(serializers.ModelSerializer):
+    country = CountryName_Serializer(read_only=True)
+    class Meta:
+        model = League
+        fields = ['code','name','logo','confederation','country']
