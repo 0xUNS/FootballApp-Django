@@ -5,7 +5,7 @@ from django.core.validators import RegexValidator
 def path_image(instance, filename):
     return '/'.join([type(instance).__name__, instance.code+'.'+filename.split('.')[-1]])
 def path_imag_p(instance, filename):
-    return '/'.join(['Profil', instance.first_name +"_"+instance.family_name+'.'+filename.split('.')[-1]])
+    return '/'.join(['Profil', instance.id+'.'+filename.split('.')[-1]])
 
 POSITION_LIST = (
         ('Gardien de but','Gardien de but'),
@@ -100,7 +100,6 @@ class Match(models.Model):
 
     competition = models.ForeignKey('League',on_delete=models.SET_NULL, null=True)
     date = models.DateField(blank=True, null=True)
-    status = models.CharField( max_length=40, choices=STATUS_LIST)
 
 
 class Country(models.Model):

@@ -22,7 +22,6 @@ urlpatterns = [
 
     path('pays/',views.CountryList,name="pays-list"),
     path('pays/<str:pk>',views.CountryDetail,name="pays-detail"),
-    path('pays_new/', views.CountryCreate, name='pays-create'),
 
     path('test/',views.Tests,name="test-data"),
 

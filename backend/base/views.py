@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import MatchSerializer, LeagueSerializer, ClubSerializer, PlayerSerializer, CoachSerializer, CountrySerializer, TestSerializer
+from .serializers import MatchSerializer, LeagueSerializer, ClubSerializer, PlayerSerializer, CoachSerializer, CountrySerializer, TestSerializer, ClubList_Serializer
 from .models import Match, League, Club, Player, Coach, Country, TestData
 
 
@@ -17,12 +17,12 @@ def Tests(request):
 def apiOverview(request):
     api_urls = {
                     'Home':'',
-                    'Liste des Matchs':'matchs/',
-                    'Liste des Leagues':'ligues/',
-                    'Liste des Clubs':'clubs/',
-                    'Liste des Joueur':'joueurs/',
-                    'Liste des Coachs':'coaches/',
-                    'Liste des Pays':'pays/',
+                    'Liste des Matchs':'http://127.0.0.1:8000/api/matchs/',
+                    'Liste des Leagues':'http://127.0.0.1:8000/api/ligues/',
+                    'Liste des Clubs':'http://127.0.0.1:8000/api/clubs/',
+                    'Liste des Joueur':'http://127.0.0.1:8000/api/joueurs/',
+                    'Liste des Coachs':'http://127.0.0.1:8000/api/coaches/',
+                    'Liste des Pays':'http://127.0.0.1:8000/api/pays/',
                 }
     return Response(api_urls)
 
@@ -35,7 +35,7 @@ def MatchList(request):
 
 @api_view(['GET'])
 def MatchDetail(request, pk):
-    match = Match.objects.get(_id=pk)
+    match = Match.objects.get(id=pk)
     serializer = MatchSerializer(match, many=False)
     return Response(serializer.data)
 
@@ -43,7 +43,7 @@ def MatchDetail(request, pk):
 @api_view(['GET'])
 def ClubList(request):
     clubs = Club.objects.all()
-    serializer = ClubSerializer(clubs, many=True)
+    serializer = ClubList_Serializer(clubs, many=True)
     return Response(serializer.data)
     
 @api_view(['GET'])
@@ -105,39 +105,9 @@ def CountryDetail(request, pk):
     serializer = CountrySerializer(country, many=False)
     return Response(serializer.data)
 
-@api_view(['POST'])
-def CountryCreate(request):
-    serializer = CountrySerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
 
+  
 """
-
-# ------ COUNTRY ----------
-@api_view(['GET','POST'])
-def CountryList(request):
-    if request.method == 'GET':
-        countries = Country.objects.all()
-        serializer = CountrySerializer(countries, many=True)
-        return Response(serializer.data)
-    elif request.method == 'POST':
-        serializer = CountrySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-      
-
-# Creation des Clubs | nb: only for admin
-@api_view(['POST'])
-def ClubCreate(request):
-    serializer = ClubSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
-
-
-
-
 from django.shortcuts import render
 from django.http import JsonResponse # HttpResponse
 from django.views import View

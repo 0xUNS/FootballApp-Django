@@ -14,7 +14,7 @@ function Club({ club }) {
                     </div>
                 </div>
                 <div id="country-div">
-                    <img src={`https://flagicons.lipis.dev/flags/1x1/${club.country}.svg`} alt={club.country} id="country-flag"/>
+                    <img src={`${club.country.flag}`} alt={club.country} id="country-flag"/>
                 </div>
             </div>
 		
