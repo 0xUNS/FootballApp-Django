@@ -21,6 +21,7 @@ def apiOverview(request):
                     'Liste des Leagues':'http://127.0.0.1:8000/api/ligues/',
                     'Liste des Clubs':'http://127.0.0.1:8000/api/clubs/',
                     'Liste des Joueur':'http://127.0.0.1:8000/api/joueurs/',
+                    'Liste des Coachs':'http://127.0.0.1:8000/api/coachs/',
                     'Liste des Pays':'http://127.0.0.1:8000/api/pays/',
                 }
     return Response(api_urls)
@@ -73,8 +74,21 @@ def PlayerList(request):
 
 @api_view(['GET'])
 def PlayerDetail(request, pk):
-    player = Player.objects.get(id=pk)
-    serializer = PlayerSerializer(player, many=False)
+    players = Player.objects.filter(club=pk)
+    serializer = PlayerSerializer(players, many=True)
+    return Response(serializer.data)
+
+# ------ COACHES ----------
+@api_view(['GET'])
+def CoachList(request):
+    coachs = Coach.objects.all()
+    serializer = CoachSerializer(coachs, many=True)
+    return Response(serializer.data)
+    
+@api_view(['GET'])
+def CoachDetail(request, pk):
+    coach = Coach.objects.get(id=pk)
+    serializer = CoachSerializer(coach, many=False)
     return Response(serializer.data)
 
 # ------ COUNTRY ----------

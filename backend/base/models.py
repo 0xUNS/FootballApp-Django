@@ -44,7 +44,7 @@ class Player(models.Model):
     position = models.CharField(max_length=20, choices=POSITION_LIST)
     number = models.PositiveIntegerField(null=True)
     photo = models.ImageField(default='_NULL.png',upload_to = path_imag_p,blank=True)
-    Club = models.ForeignKey('Club',related_name='players',on_delete=models.SET_NULL, null=True)
+    club = models.ForeignKey('Club',related_name='players',on_delete=models.SET_NULL, null=True)
     nationality = models.ForeignKey('Country',related_name='players',on_delete=models.SET_NULL, null=True)
     def __str__(self):
         return f"{self.first_name} {self.family_name}"
@@ -74,8 +74,6 @@ class Club(models.Model):
         self.code = self.code.upper()
         super(Club, self).save(force_insert, force_update)
 
-
-
 class League(models.Model):
     code = models.CharField(max_length=5,unique=True,validators=[RegexValidator('^[A-Z]*$','Seules les lettres sont autorisées.')])
     name = models.CharField(max_length=30)
@@ -91,15 +89,18 @@ class League(models.Model):
         ordering = ['country','name']
 
 class Match(models.Model):
-    Team_H = models.ForeignKey(Club, related_name='matchs',on_delete=models.SET_NULL, null=True)
-    n_Goals_H = models.PositiveIntegerField(default=0, blank=True)
-
-    Team_A = models.ForeignKey(Club, related_name='matches',on_delete=models.SET_NULL, null=True)
-    n_Goals_A = models.PositiveIntegerField(default=0, blank=True)
-
     competition = models.ForeignKey('League',on_delete=models.SET_NULL, null=True)
+
+    team_h = models.ForeignKey(Club, related_name='matchs',on_delete=models.SET_NULL, null=True)
+    n_goals_h = models.PositiveIntegerField(default=0, blank=True)
+
+    team_a = models.ForeignKey(Club, related_name='matches',on_delete=models.SET_NULL, null=True)
+    n_goals_a = models.PositiveIntegerField(default=0, blank=True)
+
     date = models.DateField(blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.team_h} vs. {self.team_a}"
 
 class Country(models.Model):
     code = models.CharField(max_length=5,unique=True,validators=[RegexValidator('^[A-Z]*$','Seules les lettres sont autorisées.')])

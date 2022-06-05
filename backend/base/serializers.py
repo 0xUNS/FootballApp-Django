@@ -12,28 +12,45 @@ class CountrySerializer(serializers.ModelSerializer):
 
 class ClubSerializer(serializers.ModelSerializer):
     country = CountryName_Serializer(read_only=True)
-    coach = Coach_inClub_Serializer(read_only=True)
-    leagues = serializers.SlugRelatedField(read_only=True, many=True,slug_field='name')
+    leagues = LeagueName_Serializer(read_only=True, many=True)
     class Meta:
         model = Club
         fields = ['id','code','name','country','coach','stadium','website','logo','rating','leagues']
 
 class LeagueSerializer(serializers.ModelSerializer):
     country = CountryName_Serializer(read_only=True)
-    clubs = serializers.SlugRelatedField(read_only=True, many=True,slug_field='name')
+    clubs = ClubName_Serializer(read_only=True, many=True)
     class Meta:
         model = League
         fields = '__all__'
 class PlayerSerializer(serializers.ModelSerializer):
-    nationality = CountrySerializer(read_only=True)
+    name = serializers.SerializerMethodField(read_only=True)
+    age = serializers.SerializerMethodField(read_only=True)
+    nationality = serializers.SlugRelatedField(read_only=True,slug_field='code')
+    club = serializers.SlugRelatedField(read_only=True,slug_field='code')
     class Meta:
         model = Player
         fields = '__all__'
+    def get_age(self, obj):
+        return datetime.date.today().year - obj.birth_date.year
+    def get_name(self, obj):
+        return f"{obj.first_name} {obj.family_name}"
+class CoachSerializer(serializers.ModelSerializer):
+    nationality = CountryName_Serializer(read_only=True)
+    age = serializers.SerializerMethodField(read_only=True)
+    name = serializers.SerializerMethodField(read_only=True)
+    class Meta:
+        model = Coach
+        fields = '__all__'
+    def get_age(self, obj):
+        return datetime.date.today().year - obj.birth_date.year
+    def get_name(self, obj):
+        return f"{obj.first_name} {obj.family_name}"
 
 class MatchSerializer(serializers.ModelSerializer):
-    Team_H = ClubSerializer(read_only=True)
-    Team_A = ClubSerializer(read_only=True)
-    competition = LeagueSerializer(read_only=True)
+    team_h = ClubName_Serializer(read_only=True)
+    team_a = ClubName_Serializer(read_only=True)
+    competition = Leaguenamelogo_Serializer(read_only=True)
     class Meta:
         model = Match
         fields = '__all__'
