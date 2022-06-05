@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Row, Col, Image, Card, ListGroup } from 'react-bootstrap'
-import axios from 'axios'
+import { Row, Col, Image, Card, ListGroup } from 'react-bootstrap';
+import axios from 'axios';
 
 function Leagues_Detail_Screen({match}) {
     const [league, setLeague]=useState([])
@@ -13,13 +13,9 @@ function Leagues_Detail_Screen({match}) {
         }
         fetchLeague()
     },[id])
-    const pays = league.country;
-    console.log(league);
-    console.log(pays);
 
     return (
         <div>
-            <Link to="/" className="btn btn-light my-3"> Retour </Link>
             <Row>
                 <Col md={4} className="py-3" align="center">
                     <Image src={league.logo} alt={league.name} width="200" height="200" fluid/>
@@ -27,15 +23,13 @@ function Leagues_Detail_Screen({match}) {
 
                 </Col>
                 <Col md={4} className="py-3">
-                    <Card>
-                <Col className="p-5">
-                        <div> {league.confederation}</div>
-                        <div>{league.type}</div>
-                        <div><a href={league.website}>{league.website}</a></div>
-                        <hr/>
-                        <div>pays.name</div>
-                        Image src=league.country.flag alt=league.country.name width="52" height="52" roundedCircle/
-                </Col>
+                <Card className="p-3">
+                    <div>{league.confederation}</div>
+                    <div>{league.type}</div>
+                    <div><a href={league.website}>{league.website}</a></div>
+                    <hr/>
+                    {league.country?.name} &nbsp; &nbsp; &nbsp;
+                    <Image src={league.country?.flag} alt={league.country?.name} width="52" height="52" roundedCircle/>
                     </Card>
                 </Col>
                 <Col md={4}>

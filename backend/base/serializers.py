@@ -26,8 +26,7 @@ class LeagueSerializer(serializers.ModelSerializer):
 class PlayerSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
     age = serializers.SerializerMethodField(read_only=True)
-    nationality = serializers.SlugRelatedField(read_only=True,slug_field='code')
-    club = serializers.SlugRelatedField(read_only=True,slug_field='code')
+    nationality = CountryName_Serializer(read_only=True)
     class Meta:
         model = Player
         fields = '__all__'
@@ -51,9 +50,13 @@ class MatchSerializer(serializers.ModelSerializer):
     team_h = ClubName_Serializer(read_only=True)
     team_a = ClubName_Serializer(read_only=True)
     competition = Leaguenamelogo_Serializer(read_only=True)
+    rating = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Match
         fields = '__all__'
+    def get_rating(self, obj):
+        return (obj.team_h.rating + obj.team_a.rating)//2
+    
 class TestSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestData

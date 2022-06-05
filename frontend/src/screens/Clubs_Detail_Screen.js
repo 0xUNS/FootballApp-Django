@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {Row, Col, Image, ListGroup, Button, Card} from 'react-bootstrap'
-import axios from 'axios'
-import Rating from '../components/Rating'
-import Coach from '../components/Coach'
-import Players from '../components/Players'
+import {Row, Col, Image, ListGroup, Card} from 'react-bootstrap';
+import axios from 'axios';
+import Iframe from 'react-iframe'
+import Rating from '../components/Rating';
+import Coach from '../components/Coach';
+import Players from '../components/Players';
 
 function Clubs_Detail_Screen({match}) {
     const [club, setClub]=useState([])
@@ -19,24 +20,24 @@ function Clubs_Detail_Screen({match}) {
     console.log(club)
     return (
         <div>
-            <Link to="/" className="btn btn-light my-3"> Retour </Link>
             <Row>
             <Col md={4} className="py-3 rounded" align="center">
                     <Image src={club.logo} alt={club.name} width="200" height="200" fluid/>
                     <h3><strong>{club.name}</strong></h3>
 
                 </Col>
-                <Col md={4} className="py-3">
+                <Col md={5} className="py-3">
                     <Card>
                 <Col>
-                    <div className="p-5">
+                    <div className="px-5 py-3">
 
-                        <div> {club.stadium}</div>
-                        <div>{club.website}</div>
+                        <div>{club.stadium}</div>
+                        <div><a href={club.website}>{club.website}</a></div>
                         <div>
-                        Image src=league.country.flag alt=league.country.name width="52" height="52" roundedCircle/
+                            
                         <hr/>
-                        club.country.name
+                        {club.country?.name} &nbsp; &nbsp; &nbsp; &nbsp;
+                        <Image src={club.country?.flag} alt={club.country?.name} width="32" height="32" roundedCircle/>
                         <hr/>
                         
                         </div>
@@ -45,7 +46,7 @@ function Clubs_Detail_Screen({match}) {
                         </div>
                     </div>
                     <div>
-                        <ListGroup  as="ol" numbered>
+                        <ListGroup  as="ol">
                         <ListGroup.Item active><h4><strong>Liste des Competions</strong></h4></ListGroup.Item>
                     
                         {club.leagues?.map(league =>(
@@ -61,11 +62,24 @@ function Clubs_Detail_Screen({match}) {
                 </Col>
                     </Card>
                 </Col>
-                <Col md={4}>
+                <Col md={3}>
                     <Coach id={club.coach} />
                 </Col>
+                    <h3>Joueurs</h3>
                 <Row>
                     <Players id={club.id} />
+                </Row>
+                <hr/>
+                <Row>
+                    <h3>Media</h3>
+                    <Col md={6}>
+                        <h4>Video</h4>
+                    <Iframe url={`https://www.youtube.com/embed/${club.video}`} width="100%" height="450px" display="initial" position="relative"/>
+                    </Col>
+                    <Col md={6}>
+                        <h4>Twitter</h4>
+                    <Iframe url={`https://www.twitter.com/search?q=${club.name}`} width="100%" height="450px" display="initial" position="relative"/>
+                    </Col>
                 </Row>
             </Row>
         </div>
@@ -73,49 +87,3 @@ function Clubs_Detail_Screen({match}) {
 }
 
 export default Clubs_Detail_Screen
-/*
-            <Row>
-                <Col md={6}>
-                    <Image src={club.logo} alt={club.name} width="130" height="130" fluid/>
-
-                </Col>
-                <Col md={3}>
-                    <ListGroup variant="flush">
-                        <ListGroup.Item>
-                            <h3>{club.name}</h3>
-                        </ListGroup.Item>
-                        
-                        <ListGroup.Item>
-                            Country: {club.country}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            Description: {club.website}
-                        </ListGroup.Item>
-                    </ListGroup>
-                </Col>
-                <Col md={3}>
-                    <Card>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Price:</Col>
-                                    <Col>
-                                        <strong>test</strong>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Status:</Col>
-                                    <Col>
-                                        test
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Button className='btn-block' disabled={club.countInStock===0} type='button'>Ajouter</Button>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Card>
-                </Col>
-            </Row>*/

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import {Row, Col, Image, ListGroup, Button, Card} from 'react-bootstrap'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import { Col, Image, Card } from 'react-bootstrap';
+import axios from 'axios';
 
 function Players({ id }) {
     const [players, setPlayers]=useState([])
@@ -14,12 +14,12 @@ function Players({ id }) {
     console.log(players)
     return (
         <>
-            {players.map(player =>(
+            {players?.map(player =>(
                     <Col key={player.id} md={3} xs={6}>
-                        <Card>
-                            <Image src={player.photo} width="100%" />
+                        <Card className="p-3">
+                            <Image src={player.photo} width="100%" rounded/>
                             <Card.Body>
-                                <Card.Title as="div"className="list-group-item d-flex justify-content-between align-items-center"><strong>{player.name}</strong>
+                                <Card.Title as="div" className="list-group-item d-flex justify-content-between align-items-center"><strong>{player.name}</strong>
                                     <span class="badge bg-primary rounded-pill">{player.number}</span>
                                 </Card.Title>
                                 <Card.Text as="div">
@@ -29,7 +29,10 @@ function Players({ id }) {
                                     Age: {player.age}
                                 </Card.Text>
                                 <Card.Text as="div">
-                                    Nationality: player.nationality.name player.nationality.flag
+                                    <hr/>
+                                    &nbsp;
+                                    {player.nationality?.name} &nbsp; &nbsp; &nbsp;
+                                    <Image src={player.nationality?.flag} alt={player.nationality?.name} width="32" height="32" roundedCircle/>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

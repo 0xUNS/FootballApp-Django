@@ -15,10 +15,10 @@ urlpatterns = [
 
 
     path('joueurs/',views.PlayerList,name="joueurs-list"),
-    path('joueurs/<str:pk>',views.PlayerDetail,name="joueurs-detail"),
+    path('joueurs/<int:pk>',views.PlayerDetail,name="joueurs-detail"),
     
     path('coachs/',views.CoachList,name="coachs-list"),
-    path('coachs/<str:pk>',views.CoachDetail,name="coachs-detail"),
+    path('coachs/<int:pk>',views.CoachDetail,name="coachs-detail"),
 
     path('pays/',views.CountryList,name="pays-list"),
     path('pays/<str:pk>',views.CountryDetail,name="pays-detail"),

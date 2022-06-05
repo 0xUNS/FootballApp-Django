@@ -9,6 +9,7 @@ import Clubs_Detail_Screen from './screens/Clubs_Detail_Screen';
 import Leagues_List_Screen from './screens/Leagues_List_Screen';
 import Leagues_Detail_Screen from './screens/Leagues_Detail_Screen';
 import About from './screens/About';
+import Search from './screens/Search';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path='/ligues/' element={<Leagues_List_Screen />} exact/>
               <Route path='/ligues/:id' element={<Leagues_Detail_Screen />} />
               <Route path='/about/' element={<About />} />
+              <Route path='/search/:keyword' element={<Search />} />
               <Route path='*' element={<h3>Page Not Found</h3>} exact/>
             </Routes>
         </Container>

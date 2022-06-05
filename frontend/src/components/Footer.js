@@ -1,11 +1,11 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
         <footer>
-            <Container>
+            <Container className="footer">
             <hr/>
                 <Row>
                     <Col className='text-center py-3'>
