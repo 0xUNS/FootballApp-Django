@@ -63,7 +63,7 @@ function Clubs_Detail_Screen({match}) {
                     </Card>
                 </Col>
                 <Col md={3}>
-                    <Coach id={club.coach} />
+                    <Coach id={club.id} />
                 </Col>
                     <h3>Joueurs</h3>
                 <Row>

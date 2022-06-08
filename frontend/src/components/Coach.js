@@ -6,7 +6,7 @@ function Coach({ id }) {
     const [coach, setCoach]=useState([])
     useEffect(()=>{
         async function fetchCoach(){
-            const { data } = await axios.get(`/api/coachs/${id}`)
+            const { data } = await axios.get(`/api/coach/${id}`)
             setCoach(data)
         }
         fetchCoach()

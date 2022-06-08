@@ -48,6 +48,7 @@ function HomeScreen() {
                 </Tab>
                 <Tab eventKey="Après Demain" title="Après Demain" disabled></Tab>
                 </Tabs>
+            <hr></hr>
             </Col>
             <Col md={4} className="">
                 <ListGroup  as="ol" numbered>
