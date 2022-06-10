@@ -34,12 +34,10 @@ function Clubs_Detail_Screen({match}) {
                         <div>{club.stadium}</div>
                         <div><a href={club.website}>{club.website}</a></div>
                         <div>
-                            
-                        <hr/>
-                        {club.country?.name} &nbsp; &nbsp; &nbsp; &nbsp;
-                        <Image src={club.country?.flag} alt={club.country?.name} width="32" height="32" roundedCircle/>
-                        <hr/>
-                        
+                            <hr/>
+                            {club.country?.name} &nbsp; &nbsp; &nbsp; &nbsp;
+                            <Image src={club.country?.flag} alt={club.country?.name} width="32" height="32" roundedCircle/>
+                            <hr/>
                         </div>
                         <div className="my-3">
                         <Rating value={club.rating} color={`#f8e825`} />

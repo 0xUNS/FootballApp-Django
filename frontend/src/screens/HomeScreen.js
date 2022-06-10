@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Tabs, Tab, Image, ListGroup,} from 'react-bootstrap';
+import { Row, Col, Tabs, Tab, Image, ListGroup, Alert } from 'react-bootstrap';
 import Match from '../components/Match';
 import axios from 'axios';
 
@@ -29,6 +29,11 @@ function HomeScreen() {
     
     return (
         <div>
+            <Alert variant="warning">
+                <strong>Le site web est en cours de développement. </strong>
+                Pour tout renseignement rendez-vous sur
+                <Alert.Link href="https://github.com/0xUNS/FootballApp-Django" target="_blank"> GitHub.</Alert.Link>
+                </Alert>
             <Col md={9}>
             <h2>Les matchs</h2>
             <Tabs defaultActiveKey="Aujourd'hui" className="mb-3">

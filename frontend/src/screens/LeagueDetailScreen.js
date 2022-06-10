@@ -24,12 +24,16 @@ function Leagues_Detail_Screen({match}) {
                 </Col>
                 <Col md={4} className="py-3">
                 <Card className="p-3">
-                    <div>{league.confederation}</div>
+                    <div>
+                        <Image src="/media/League/UEFA.png" alt="confederation" width={40} fluid/> &nbsp; &nbsp;
+                        {league.confederation}
+                    </div>
                     <div>{league.type}</div>
                     <div><a href={league.website}>{league.website}</a></div>
-                    <hr/>
-                    {league.country?.name} &nbsp; &nbsp; &nbsp;
-                    <Image src={league.country?.flag} alt={league.country?.name} width="52" height="52" roundedCircle/>
+                    <div><hr/>
+                        {league.country?.name} &nbsp; &nbsp; &nbsp; &nbsp;
+                        <Image src={league.country?.flag} alt={league.country?.name} width="32" height="32" roundedCircle/>
+                    </div>
                     </Card>
                 </Col>
                 <Col md={4}>

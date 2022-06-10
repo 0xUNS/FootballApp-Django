@@ -76,11 +76,12 @@ h3{
 .match_list{
   padding: 0rem !important;
   margin: 1rem !important;
-  background-color:#222;
+  background-color:#1A1C1E;
   border-radius: 0.5rem;
 }
 .match_list:hover{
-  background-color:#333;
+  background-color: #181a1b;
+  color:#e8e6e3;
 }
 .games-list{
   display: flex;
@@ -99,13 +100,17 @@ h3{
   margin-top: 1rem !important;
   display: flex;
   align-items: center;
-  background-color:#222;
+  background-color: #1A1C1E;
+  color:#e8e6e38c;
   border-radius: 0.5rem;
 }
 .card-club:hover{
-  background-color:#333;
+  background-color: #181a1b;
+  color:#e8e6e3;
 }
-
+.card-club a{
+  color: #fff !important
+}
 .footer{
   color: rgb(170, 165, 152) !important;
   background-color: #222 !important;

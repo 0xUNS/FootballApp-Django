@@ -1,14 +1,14 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import SearchBox from './SearchBox'
-import { Alert } from 'react-bootstrap';
 
 function Header() {
     return (
         <header>
             <Navbar bg="primary" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
+                    <Image src="/media/logo.png" width={50} alt="logo" fluid/>
                     <LinkContainer to="/">
                         <Navbar.Brand>Football News</Navbar.Brand>
                     </LinkContainer>
@@ -37,11 +37,6 @@ function Header() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-                <Alert variant="warning">
-                <strong>Le site web est en cours de développement. </strong>
-                Pour tout renseignement rendez-vous sur
-                <Alert.Link href="https://github.com/0xUNS/FootballApp-Django" target="_blank"> GitHub.</Alert.Link>
-                </Alert>
         </header>
     )
 }
@@ -49,9 +44,7 @@ function Header() {
 export default Header
 
 /*
-
-<i class="fa-solid fa-medal"></i>
-<i class="fa-solid fa-ranking-star"></i>
-<i class="fa-solid fa-goal-net"></i>
-
+    <i class="fa-solid fa-medal"></i>
+    <i class="fa-solid fa-ranking-star"></i>
+    <i class="fa-solid fa-goal-net"></i>
 */

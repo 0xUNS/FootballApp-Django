@@ -28,7 +28,7 @@ function Match({ match }) {
                 </Col>
                 <Col className="text-center">
                 <div className="games-score">
-                {match.n_goals_h} &nbsp; - &nbsp; {match.n_goals_a}
+                {match.goals_h} &nbsp; - &nbsp; {match.goals_a}
                 </div>
                 <div className="badge rounded-pill bg-danger">Live</div>
                 <div className="games-time">{d.getDate()} / {d.getMonth() + 1} / {d.getFullYear()}</div>

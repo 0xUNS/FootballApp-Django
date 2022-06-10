@@ -1,11 +1,29 @@
 import React from 'react';
+import { Image } from 'react-bootstrap';
 
 function About() {
     return (
         <div className="container">
+                    <Image src="/media/logo_150x150.jpg" alt="logo" width={200} roundedCircle/>
             <h2>About</h2>
 
         <div className="container mx-5">
+            <h3>Application pour les matches de Football avec Django &amp; React.js</h3>
+            <p>Cette application permettra de voir la liste des matchs ( match d'aujourd'hui , les match d'hier et les matchs à venir qui seront representé par des onglets dans le menu principal). </p>
+
+            <ul>
+                <li>Une barre de recherche ou l'on saisit le nom de l'équipe, le résultatsera sous forme :
+                    <ul>
+                        <li>Le logo de l'équipe</li>
+                        <li>Les footballeur de l'équipe ( nom et image )</li>
+                        <li>Le coach (nom et image)</li>
+                    </ul>
+                </li>
+                <li>Un onglet de vote pour les prévisions des équipes gagnantes parrapport aux compétitions</li>
+                <li>Un onglet des vidéos les plus regarder des séquences de match</li>
+                <li>Un onglet pour les matchs les plus attendus par la communauté</li>
+                <li>Un lien de partage via les réseaux sociaux</li>
+            </ul>
             <h3>Documentations :</h3>
             ReactJS :
             <ul>

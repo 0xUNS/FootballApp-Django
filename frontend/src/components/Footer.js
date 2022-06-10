@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Footer() {
@@ -20,6 +20,7 @@ function Footer() {
                         </div>
                     </Col>
                     <Col>
+                    <Image src="/media/logo.png" alt="logo" width={120} fluid/>
                     <div>Projet en Django et ReactJS</div>
                     <div><i class="fa-solid fa-user-group"></i> &nbsp; Realisateur:
                         <li>Younes AMZIL</li>
