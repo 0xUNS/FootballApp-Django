@@ -17,7 +17,7 @@ function Clubs_Detail_Screen({match}) {
         }
         fetchClub()
     },[id])
-    console.log(club)
+    if(club.length === 0) return(<h1>Equipe Introuvable</h1>)
     return (
         <div>
             <Row>

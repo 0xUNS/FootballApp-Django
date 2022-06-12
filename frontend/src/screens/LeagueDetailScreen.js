@@ -13,6 +13,7 @@ function Leagues_Detail_Screen({match}) {
         }
         fetchLeague()
     },[id])
+    if(league.length === 0) return(<h1>Ligue Introuvable</h1>)
 
     return (
         <div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Image, Card } from 'react-bootstrap';
+import { Col, Image, Card, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
 function Players({ id }) {
@@ -11,7 +11,8 @@ function Players({ id }) {
         }
         fetchPlayers()
     },[id])
-    console.log(players)
+    if(players.length === 0) return(<Card className="p-3">Données Des Joueurs Introuvables <hr/><Alert variant="warning"><strong>L'administrateur n'a pas rempli les données, </strong> visiter <Alert.Link href="#/clubs/CHE" target="_blank">  Chelsea FC </Alert.Link> en tant que modèle</Alert></Card>)
+
     return (
         <>
             {players?.map(player =>(

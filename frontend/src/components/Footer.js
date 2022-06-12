@@ -24,7 +24,7 @@ function Footer() {
                     <div>Projet en Django et ReactJS</div>
                     <div><i class="fa-solid fa-user-group"></i> &nbsp; Realisateur:
                         <li>Younes AMZIL</li>
-                        <li>Abderahim KHALIDI</li>
+                        <li>Abderrahim KHALIDI</li>
                     </div>
                     <div><i class="fa-solid fa-person-chalkboard"></i> &nbsp; Encadrant: <li>Zineb Hidila</li></div>
                     </Col>

@@ -34,35 +34,17 @@ virtualenv dj_venv
 
 dj_venv/bin/activate
 
-pip install django
+pip install -r requirements.txt
 
 python manage.py runserver
 
-pip install djangorestframework
-
-pip install django-cors-headers
-
 ```
 
-React
-```
-npx create-react-app frontend
-
-
-npm install react-bootstrap
-
-npm install react-router-dom
-
-npm install react-router-bootstrap
-
-npm install axios
-
-```
-
-Servers
+Server
 
 ```
 python3 manage.py runserver
 
-npm start
 ```
+
+déploiement: [emsi-foot](https://emsi-foot.herokuapp.com/)
