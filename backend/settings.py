@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-mkv(a4dibnam8-)p-s$1l^98s4t)ef2aw^@7x13)vtwpwj@qe6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','emsi-foot.herokuapp.com']
 
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -134,3 +135,5 @@ CORE_ORIGIN_WHITELIST = ['http://localhost:3000']
 
 MEDIA_ROOT = BASE_DIR/ 'media'
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'

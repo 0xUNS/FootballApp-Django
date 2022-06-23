@@ -24,7 +24,7 @@ function Header() {
                     </Nav>
                         <SearchBox />
                         <Nav.Link href="https://github.com/0xUNS/FootballApp-Django"><i class="fa-brands fa-github"></i> Github </Nav.Link>
-                        <Nav.Link href="http://127.0.0.1:8000/admin/"><i class="fa fa-user-gear"></i> Admin </Nav.Link>
+                        <Nav.Link href="https://emsi-foot.herokuapp.com/admin/"><i class="fa fa-user-gear"></i> Admin </Nav.Link>
                         <LinkContainer to="/about">
                         <Nav.Link><i class="fa fa-circle-info"></i> A propos </Nav.Link>
                         </LinkContainer>

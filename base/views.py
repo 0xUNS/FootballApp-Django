@@ -7,12 +7,12 @@ from .models import Match, Club, League, Player, Coach
 @api_view(['GET'])
 def apiOverview(request):
     api_urls = {
-                    'Home':'http://127.0.0.1:8000/',
-                    ' Matchs':'http://127.0.0.1:8000/api/matchs/',
-                    ' Leagues':'http://127.0.0.1:8000/api/ligues/',
-                    ' Clubs':'http://127.0.0.1:8000/api/clubs/',
-                    '  Joueur (id:club)':'http://127.0.0.1:8000/api/joueurs/1',
-                    '  Coachs (id:club)':'http://127.0.0.1:8000/api/coach/1',
+                    'Home':'https://emsi-foot.herokuapp.com/',
+                    ' Matchs':'https://emsi-foot.herokuapp.com/api/matchs/',
+                    ' Leagues':'https://emsi-foot.herokuapp.com/api/ligues/',
+                    ' Clubs':'https://emsi-foot.herokuapp.com/api/clubs/',
+                    '  Joueur (id:club)':'https://emsi-foot.herokuapp.com/api/joueurs/1',
+                    '  Coachs (id:club)':'https://emsi-foot.herokuapp.com/api/coach/1',
                 }
     return Response(api_urls)
 
